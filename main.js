@@ -32,7 +32,7 @@ function createRow(columns) {
     let markup = '<tr>';
     for (let i = 0; i < columns; i++) {
         markup += '<td style="width: 40px; height: 40px;">';
-        markup += '<img src="./box1.png" width: "40px" height = "40px" >' ;
+        markup += '<img src="images/box1.png" width: "40px" height = "40px" >' ;
         markup += '</td>' ;
     }
 
