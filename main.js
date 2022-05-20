@@ -11,6 +11,7 @@ let currentGame;
 
 
 
+
 function loadRandomGame() {
     currentGame = loadGames();
     console.log('currentGame', currentGame);
@@ -43,6 +44,32 @@ function createRow(columns) {
 
 function loadGames() {
     let data = boards[0].split(';');
-    return data[0];
+    const len =rawData.length;
+
+    let currentIndex = 0;
+    while (currentIndex + 1 < len) {
+        
+        let data = rawData[currentIndex].split('\n').filter((d) => d !== '');
+        console.log('data', data);
+        let max = 0;
+        data.shilf();
+        data.forEach((element) => {
+            if (element.length > max) max = element.length;          
+        });
+        
+        let game = {
+            author: 'Roger Delaporte',
+            level: rawData[currentIndex + 1].split('\n')[0],
+            height: data.length,
+            maxWidth: max,
+            data: data,
+        };
+        games.push(game);
+        currentIndex++;
+    }
+    console.log(games);
+    const gameNo = Math.floor(Math.random() * (games.length -1));
+
+    return games[gameNo];
 }
 
